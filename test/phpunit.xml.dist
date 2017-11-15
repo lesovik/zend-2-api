@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="Bootstrap.php"
+         colors="true"
+         verbose="true">
+    <testsuites>
+        <testsuite name="All Modules">
+            <directory>../module/Authentication/test</directory>
+            <directory>../module/AdminUser/test</directory>
+            <directory>../module/ActionLog/test</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory>../module/Authentication/src/</directory>
+            <directory>../module/AdminUser/src/</directory>
+            <directory>../module/ActionLog/src/</directory>
+        </whitelist>
+        <blacklist>
+            <directory suffix=".php">../vendor</directory>
+            <directory suffix=".php">../config</directory>
+            <file>../module/Authentication/Module.php</file>
+            <file>../module/Authentication/test/bootstrap.php</file>
+            <file>../module/AdminUser/Module.php</file>
+            <file>../module/AdminUser/test/bootstrap.php</file>
+            <file>../module/ActionLog/Module.php</file>
+            <file>../module/ActionLog/test/bootstrap.php</file>
+        </blacklist>
+    </filter>
+</phpunit>

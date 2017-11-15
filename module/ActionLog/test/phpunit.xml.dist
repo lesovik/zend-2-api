@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="ActionLogBootstrap.php">
+    <testsuites>
+        <testsuite name="zend-2-api-action-log">
+            <directory>./ActionLogTest</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

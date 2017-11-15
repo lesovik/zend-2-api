@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="AdminUserBootstrap.php">
+    <testsuites>
+        <testsuite name="zend-2-api-admin-user">
+            <directory>./AdminUserTest</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

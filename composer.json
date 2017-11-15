@@ -1,0 +1,26 @@
+{
+  "name": "Zend2Api",
+  "description": "Zend 2 Api",
+  "keywords": [
+    "framework",
+    "zf2"
+  ],
+  "homepage": "http://framework.zend.com/",
+  "require": {
+    "php": "7.2.*",
+    "zendframework/zendframework": "2.4.9",
+    "aws/aws-sdk-php": "2.*",
+    "zfr/zfr-cors": "1.*",
+    "core": "@dev",
+    "robmorgan/phinx": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:lesovik/zend-2-api-core.git"
+    }
+  ]
+}

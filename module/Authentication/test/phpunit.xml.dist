@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="AuthenticationBootstrap.php">
+    <testsuites>
+        <testsuite name="zend-2-api-authentication">
+            <directory>./AuthenticationTest</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
