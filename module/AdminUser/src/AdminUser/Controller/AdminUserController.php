@@ -51,12 +51,15 @@ class AdminUserController extends RestfulJsonController {
 
     public function update( $id, $data ) {
         $service = $this->getServiceLocator()->get('AdminUserUpdate');
+
+
         $service->setId($id);
         if ( $service->execute($data) ) {
             $this->view->setVariables($service->getData());
         } else {
             $this->setErrors($service);
         }
+
         return $this->view;
     }
 
@@ -72,6 +75,7 @@ class AdminUserController extends RestfulJsonController {
     }
 
     public function replaceList( $data ) {
+
         $service = $this->getServiceLocator()->get('AdminUserUpdate');
         if ( $service->execute($data) ) {
             $this->view->setVariables($service->getData());

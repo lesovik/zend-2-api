@@ -36,28 +36,35 @@ class Update extends Service
      */
     public function execute(array $parameters)
     {
-        /**
-         * @var Service\Get $adminUserGetter
-         */
+
         $this->adminUserGetter = $this->serviceManager->get('AdminUserGet');
         $this->data = $this->singleDatumToArray($parameters);
+
         $connection = $this->executer->getAdapter()->getDriver()->getConnection();
         $connection->beginTransaction();
+
+
         try {
+
             foreach ($this->data as $key => $data) {
+
                 $data['id'] = (!$this->id && !empty($data['id'])) ? $data['id'] : $this->id;
+
                 if (!$this->isValid($data)) {
                     $connection->rollback();
                     return false;
                 }
+
                 $this->data[$key] = $this->doUpdate($data);
             }
             $connection->commit();
+
             return true;
         } catch (\Exception $ex) {
             $connection->rollback();
             throw $ex;
         }
+
     }
 
     /**
@@ -103,10 +110,12 @@ class Update extends Service
      */
     protected function isValid(array $data)
     {
+
         if (!$this->adminUserGetter->execute(['id' => $data['id']])) {
             $this->validator = $this->adminUserGetter->getValidator();
             return false;
         } else {
+
             $existing = $this->adminUserGetter->getData();
             foreach ($data as $key => $val) {
                 if ($key != 'id' && !empty($existing[$key]) && $val == $existing[$key]) {
@@ -114,12 +123,20 @@ class Update extends Service
                 }
             }
         }
+
         $this->modified = $data;
         $this->validator->setUp(new AdminUser(), $this->executer->getAdapter());
+
         $this->validator->setData($this->modified);
         if (!$this->validator->isValid()) {
+
+//
+//            var_dump('kfdsfsfu');
+//            die();
             return false;
         }
+        var_dump('ku', $data, $this->validator->getElements());
+        die();
         return true;
     }
 
